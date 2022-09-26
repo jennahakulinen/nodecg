@@ -6,32 +6,42 @@
 		.monospace {
 			font-family: monospace;
 		}
+		input[type="text"] {
+			width: 100%;
+			margin-bottom: 30px;
+		}
 	</style>
 </head>
 <body>
 	<p>
-		Hello, I'm one of the panels in your bundle!
-		I'm where you put your controls.
+		Moi tässä vaihdetaan puhujatietoja
 	</p>
+	<hr>
 
-	<p>To edit me, open "<span id="path" class="monospace"></span>" in your favorite text editor or IDE.</p>
-
-	<p>
-		You can use any libraries, frameworks, and tools you want.
-		The only limit of panels is that they cannot render outside of their
-		<span class="monospace">&lt;iframe&gt;</span>'s bounding box.
-	</p>
-
-	<p>Visit <a href="https://nodecg.com" target="_blank" rel="noopener">https://nodecg.com</a> for full documentation.</p>
-
-	<p>You've got this!</p>
+	<form id="speakerForm">
+		<label for="speaker">Puhujan nimi</label>
+		<input type="text" id="speaker" />
+		<button type="submit">Vaihda nimeä</button>
+	  </form>
 
 	<script>
-		document.getElementById('path').textContent = `nodecg${window.location.pathname}`;
 
-		// You can access the NodeCG api anytime from the `window.nodecg` object
-		// Or just `nodecg` for short. Like this!:
-		nodecg.log.info('Here\'s an example of using NodeCG\'s logging API!');
+	// formi
+		const speakerForm = document.getElementById("speakerForm");
+		//Tallessa oleva nimi
+		const speakerRep = nodecg.Replicant("speakerReplicant");
+		// Tekstikentän kirjoitukset
+		const speaker = document.getElementById("speaker");
+
+		speakerRep.on("change", (newValue, oldValue) => {
+		  console.log(`myRep changed from ${oldValue} to ${newValue}`);
+		  speaker.value = newValue;
+		});
+
+		speakerForm.addEventListener("submit", (e) => {
+		e.preventDefault;
+		speakerRep.value = speaker.value;
+		});
 	</script>
 </body>
 </html>
