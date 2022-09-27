@@ -14,15 +14,23 @@
 </head>
 <body>
 	<p>Puhujatieto:</p>
-	<div id="puhuja">Faija Mehiläinen</div>
+	<div id="puhuja">Maija Mehiläinen</div>
+	<div id="titteli">UI designer</div>
 
 	<script>
 		const speakerRep = nodecg.Replicant("speakerReplicant");
+		const titleRep = nodecg.Replicant("titleReplicant");
+
 		const puhuja = document.getElementById("puhuja");
+		const titteli = document.getElementById("titteli");
 
 		speakerRep.on("change", (newValue, oldValue) => {
 		  console.log(`myRep changed from ${oldValue} to ${newValue}`);
 		  puhuja.innerHTML = newValue;
+		});
+		titleRep.on("change", (newValue, oldValue) => {
+		  console.log(`myRep changed from ${oldValue} to ${newValue}`);
+		  titteli.innerHTML = newValue;
 		});
 	</script>
 </body>

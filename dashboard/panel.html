@@ -14,33 +14,52 @@
 </head>
 <body>
 	<p>
-		Moi tässä vaihdetaan puhujatietoja
+		Vaihda puhujatietoja:
 	</p>
-	<hr>
+
 
 	<form id="speakerForm">
 		<label for="speaker">Puhujan nimi</label>
 		<input type="text" id="speaker" />
-		<button type="submit">Vaihda nimeä</button>
-	  </form>
+		<button type="submit">Vaihda puhujaa</button>
+	</form>
+	<br>
+	<hr>
+	<br>
+	<form id="titleForm">
+		<label for="title">Puhujan titteli</label>
+		<input type="text" id="title" />
+		<button type="submit">Vaihda titteli</button>
+	</form>
 
 	<script>
 
-	// formi
+		// formi
 		const speakerForm = document.getElementById("speakerForm");
+		const titleForm = document.getElementById("titleForm");
 		//Tallessa oleva nimi
 		const speakerRep = nodecg.Replicant("speakerReplicant");
+		const titleRep = nodecg.Replicant("titleReplicant");
 		// Tekstikentän kirjoitukset
 		const speaker = document.getElementById("speaker");
+		const title = document.getElementById("title");
 
 		speakerRep.on("change", (newValue, oldValue) => {
 		  console.log(`myRep changed from ${oldValue} to ${newValue}`);
 		  speaker.value = newValue;
 		});
+		titleRep.on("change", (newValue, oldValue) => {
+		  console.log(`myRep changed from ${oldValue} to ${newValue}`);
+		  title.value = newValue;
+		});
 
 		speakerForm.addEventListener("submit", (e) => {
 		e.preventDefault;
 		speakerRep.value = speaker.value;
+		});
+		titleForm.addEventListener("submit", (e) => {
+		e.preventDefault;
+		titleRep.value = title.value;
 		});
 	</script>
 </body>
