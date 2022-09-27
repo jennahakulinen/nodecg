@@ -8,7 +8,10 @@
 		}
 		input[type="text"] {
 			width: 100%;
-			margin-bottom: 30px;
+			margin: 10px 0 15px 0;
+		}
+		#show {
+			margin: 10px 0 15px 0;
 		}
 	</style>
 </head>
@@ -23,26 +26,36 @@
 		<input type="text" id="speaker" />
 		<button type="submit">Vaihda puhujaa</button>
 	</form>
-	<br>
 	<hr>
-	<br>
 	<form id="titleForm">
 		<label for="title">Puhujan titteli</label>
 		<input type="text" id="title" />
 		<button type="submit">Vaihda titteli</button>
 	</form>
+	<hr>
+
+	<button id="show">Näytä/piilota</button>
 
 	<script>
-
-		// formi
 		const speakerForm = document.getElementById("speakerForm");
 		const titleForm = document.getElementById("titleForm");
-		//Tallessa oleva nimi
+
 		const speakerRep = nodecg.Replicant("speakerReplicant");
 		const titleRep = nodecg.Replicant("titleReplicant");
-		// Tekstikentän kirjoitukset
+
 		const speaker = document.getElementById("speaker");
 		const title = document.getElementById("title");
+
+		// const show = document.getElementById("show");
+		// const container = document.getElementsByClassName("container");
+
+		// show.addEventListener("click", function () {
+		// 	if (container.style.display === "block") {
+		// 		container.style.display === "none";
+		// 	} else {
+		// 		container.style.display = "block";
+		// 	}
+		// });
 
 		speakerRep.on("change", (newValue, oldValue) => {
 		  console.log(`myRep changed from ${oldValue} to ${newValue}`);
