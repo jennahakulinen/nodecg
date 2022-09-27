@@ -181,17 +181,44 @@
 		const speakerRep = nodecg.Replicant("speakerReplicant");
 		const titleRep = nodecg.Replicant("titleReplicant");
 
+		const blokki = document.getElementById("blokki");
 		const puhuja = document.getElementById("puhuja");
+		const tokablokki = document.getElementById("tokablokki");
 		const titteli = document.getElementById("titteli");
 
 		speakerRep.on("change", (newValue, oldValue) => {
 		  console.log(`myRep changed from ${oldValue} to ${newValue}`);
 		  puhuja.innerHTML = newValue;
+		  animations();
 		});
 		titleRep.on("change", (newValue, oldValue) => {
 		  console.log(`myRep changed from ${oldValue} to ${newValue}`);
 		  titteli.innerHTML = newValue;
+		  animations();
 		});
+
+		function animations() {
+		blokki.classList.remove("title-block-animation");
+		blokki.offsetWidth;
+		blokki.classList.add("title-block-animation");
+
+		puhuja.classList.remove("title-h1-animation");
+		puhuja.offsetWidth;
+		puhuja.classList.add("title-h1-animation");
+
+		tokablokki.classList.remove("role-block-animation");
+		tokablokki.offsetWidth;
+		tokablokki.classList.add("role-block-animation");
+
+		titteli.classList.remove("role-p-animation");
+		titteli.offsetWidth;
+		titteli.classList.add("role-p-animation");
+
+		// lowerThird.classList.remove("lower-third-animation");
+		// lowerThird.offsetWidth;
+		// lowerThird.classList.add("lower-third-animation");
+     	}
+
 	</script>
 </body>
 </html>
